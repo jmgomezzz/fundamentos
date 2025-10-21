@@ -38,6 +38,9 @@ class Factoria{
     this.potencias = [1, 5, 10, 20];
     this.voltajes = [3.3, 5, 12, 240];
     this.materiales = ["Titanio", "Acero", "Carbono"];
+    this.Total = 0;
+    this.TotalElectricas = 0;
+    this.TotalMecanicas = 0;
     }
 //Generador de numeros para las odds random (y los codigos y todo lo que tenga que ver con math vaya)
 
@@ -46,18 +49,18 @@ subtipoPieza(arr){
     return arr[Math.floor(Math.random() * arr.length)];
     }
 //Los dígitos del código los generamos de una forma similar, usando el bucle for para ir escribiendo los numeros
-digitoCodigo(){
-    let s = ' ';
+digitoCodigo(n){
+    let s = '';
     for (let i = 0; i<n; i++){ 
     s += Math.floor(Math.random() * 10);
     }
     return s;
 }
-serialCompleto(isElecrtrica){
+serialCompleto(isElectrica){
     return this.digitoCodigo(10) +  (isElectrica ? 'E' : 'M');
 }
 //Fabricación de las piezas
-fabricacionPieza(Nombre = ' '){
+generarPieza(Nombre = ' '){
     const isElectrica = Math.random() < 0.3; //Así nos aseguramos de que haya un 30% de probabilidadaes de que salga electrica, luego pondremos con un else las mecanicas y ya
     const fechaFabricación = new Date();
     if (isElectrica){
@@ -94,17 +97,17 @@ class EstacionTratamiento {
     }
 
 //Procesador de piezas y actualizador de contadores
-    procesar(pieza){
+    procesarPieza(pieza){
         if (!pieza) return null;
 
         //Para las eléctricas
         if (pieza instanceof PiezaElectrica) {
             const potencia = pieza.potencia;
             if (potencia <= 5) {
-                pieza.procesamiento = "barniz normal";
+                pieza.procesamiento = "Barnizada normal";
                 this.barnizNormal++;
             }else {
-                pieza.procesamiento = "barniz especial";
+                pieza.procesamiento = "Barnizada especial";
                 this.barnizEspecial++;
             }
             return pieza;
@@ -113,13 +116,13 @@ class EstacionTratamiento {
         if (pieza instanceof PiezaMecanica) {
             const material = pieza.materialFabricación;
             if (material === "Acero") {
-                pieza.procesamiento = "galvanizado";
+                pieza.procesamiento = "Galvanizado";
                 this.galvanizado++;
             } else if (material === "Titanio") {
-                pieza.procesamiento = "pulido";
+                pieza.procesamiento = "Pulido";
                 this.pulido++;
             } else if (material === "Carbono") {
-                pieza.procesamiento = "pintado";
+                pieza.procesamiento = "Pintado";
                 this.pintado++;
             }
             return pieza;
