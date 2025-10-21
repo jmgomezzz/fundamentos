@@ -74,3 +74,15 @@ fabricacionPieza(Nombre = ' '){
     }
 }
 }
+
+
+class EstacionTratamiento {
+  constructor() {
+      this.barnizNormal=0,
+      thisbarnizEspecial= 0,
+      this.galvanizado=0,
+      this.pulido=0,
+      this.pintado=0
+    };
+  }
+
