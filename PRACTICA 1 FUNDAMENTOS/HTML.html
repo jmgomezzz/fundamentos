@@ -6,8 +6,8 @@
 </head>
 <body>
 <p>Pulsa para ejecutar la simulación:</p>
-<button id="run-100"><button onclick="Fabricar(100)">Simular 100 turnos</button>
-<button id="run-1000"><button onclick="Fabricar(1000)">Simular 1000 turnos</button>
+<button id="run-100">Simular 100 turnos</button>
+<button id="run-1000">Simular 1000 turnos</button>
 <h2>Resultados</h2>
 <pre id="output">Aquí aparecerán los resultados de la simulación</pre>
 
@@ -27,7 +27,7 @@ function Fabricar(turnos){
     }
 
     //Obtenemos contadores
-    const tratamientos = estacion.obtenerContadores();
+    const tratamientos = estacion.devolverContadores();
     const total= factoria.Total ?? (factoria.TotalElectricas + factoria.TotalMecanicas);
     const electricas = factoria.TotalElectricas;
     const mecanicas = factoria.TotalMecanicas;
