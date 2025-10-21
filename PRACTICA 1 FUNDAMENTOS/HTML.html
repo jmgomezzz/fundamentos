@@ -3,8 +3,57 @@
 <head>
     <title> LA FÁBRICA DE PIEZAS</title>
     <meta charset="UTF-8">
+</head>
+<body>
+<p>Pulsa para ejecutar la simulación:</p>
+<button id="run-100"><button onclick="Fabricar(100)">Simular 100 turnos</button>
+<button id="run-1000"><button onclick="Fabricar(1000)">Simular 1000 turnos</button>
+<h2>Resultados</h2>
+<pre id="output">Aquí aparecerán los resultados de la simulación</pre>
 
-<input type="Fabricar(100)">Fabricar 100 piezas</button>
-<button onclick="Fabricar(1000)">Fabricar 1000 piezas</button>
-<pre id="resultado"></pre>
-<script src="main.js"></script>
+<!-- Cargamos el script con las clases Factoria y Estación-->
+<script src="./JavaScript.js"></script>
+
+<script>
+//función para ejecutar la simulación
+function Fabricar(turnos){
+    //Creamos las instancias de la factoría y la estación de tratamiento
+    const factoria = new Factoria();
+    const estacion = new EstacionTratamiento();
+
+    for (let i=0; i<turnos; i++){
+        const pieza = factoria.generarPieza(); //Genera una pieza
+        estacion.procesarPieza(pieza); //La procesa
+    }
+
+    //Obtenemos contadores
+    const tratamientos = estacion.obtenerContadores();
+    const total= factoria.Total ?? (factoria.TotalElectricas + factoria.TotalMecanicas);
+    const electricas = factoria.TotalElectricas;
+    const mecanicas = factoria.TotalMecanicas;
+
+    //Mostramos resultados
+    const out = [
+        `Turnos: ${turnos}`,
+        `Piezas totales: ${total}`,
+        `  Eléctricas: ${electricas}`,
+        `  Mecánicas: ${mecanicas}`,
+        ``,
+        `De las eléctricas:`,
+        `  Barnizada normal: ${tratamientos.barnizNormal}`,
+        `  Barnizada especial: ${tratamientos.barnizEspecial}`,
+        ``,
+        `De las mecánicas:`,
+        `  Galvanizadas: ${tratamientos.galvanizado}`,
+        `  Pintadas: ${tratamientos.pintado}`,
+        `  Pulidas: ${tratamientos.pulido}`
+      ].join('\n');
+    document.getElementById("output").textContent = out;
+}
+
+    //Eventos listener para los botones
+    document.getElementById("run-100").addEventListener("click", () => Fabricar(100));
+    document.getElementById("run-1000").addEventListener("click", () => Fabricar(1000));
+</script>
+</body>
+</html>
