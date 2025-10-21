@@ -42,7 +42,7 @@ class Factoria{
 //Generador de numeros para las odds random (y los codigos y todo lo que tenga que ver con math vaya)
 
 //Aquí nos elije el subtipo de pieza, usando los arrays creados en el constructor
-subtipoPieza(){
+subtipoPieza(arr){
     return arr[Math.floor(Math.random() * arr.length)];
     }
 //Los dígitos del código los generamos de una forma similar, usando el bucle for para ir escribiendo los numeros
@@ -65,24 +65,73 @@ fabricacionPieza(Nombre = ' '){
         const codigoPieza = this.serialCompleto(true);
         const potencia = this.potencias[Math.floor(Math.random() * this.potencias.length)];
         const voltaje = this.voltajes[Math.floor(Math.random() * this.voltajes.length)];
-        return new PiezaElectrica(nombre, codigoPieza, fechaFabricación, potencia, voltaje);
+        const pieza = new PiezaElectrica(nombre, codigoPieza, fechaFabricación, potencia, voltaje);
+        
+        this.Total++;
+        this.TotalElectricas++;
+        return pieza;
     } else {
         const nombre = this.subtipoPieza(this.nombreMecanicas);
         const codigoPieza = this.serialCompleto(false);
         const materialFabricación = this.materiales[Math.floor(Math.random() * this.materiales.length)];
-        return new PiezaMecanica(nombre, codigoPieza, fechaFabricación, materialFabricación);
+        const pieza = new PiezaMecanica(nombre, codigoPieza, fechaFabricación, materialFabricación);
+        
+        this.Total++;
+        this.TotalMecanicas++;
+        return pieza;
     }
 }
 }
 
-
+//Estación de tratamiento
 class EstacionTratamiento {
   constructor() {
       this.barnizNormal=0,
-      thisbarnizEspecial= 0,
+      this.barnizEspecial= 0,
       this.galvanizado=0,
       this.pulido=0,
       this.pintado=0
-    };
-  }
+    }
 
+//Procesador de piezas y actualizador de contadores
+    procesar(pieza){
+        if (!pieza) return null;
+
+        //Para las eléctricas
+        if (pieza instanceof PiezaElectrica) {
+            const potencia = pieza.potencia;
+            if (potencia <= 5) {
+                pieza.procesamiento = "barniz normal";
+                this.barnizNormal++;
+            }else {
+                pieza.procesamiento = "barniz especial";
+                this.barnizEspecial++;
+            }
+            return pieza;
+        }
+        //Para las mecánicas
+        if (pieza instanceof PiezaMecanica) {
+            const material = pieza.materialFabricación;
+            if (material === "Acero") {
+                pieza.procesamiento = "galvanizado";
+                this.galvanizado++;
+            } else if (material === "Titanio") {
+                pieza.procesamiento = "pulido";
+                this.pulido++;
+            } else if (material === "Carbono") {
+                pieza.procesamiento = "pintado";
+                this.pintado++;
+            }
+            return pieza;
+        }
+    }
+    devolverContadores(){
+        return {
+            barnizNormal: this.barnizNormal,
+            barnizEspecial: this.barnizEspecial,
+            galvanizado: this.galvanizado,
+            pulido: this.pulido,
+            pintado: this.pintado
+        }
+    }
+}
