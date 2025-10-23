@@ -1,6 +1,8 @@
 
 
 body {
+  justify-content: center;
+  align-items: center;
   width: 400px;
   height: 400px;
   font-family: sans-serif;
@@ -17,4 +19,12 @@ button {
   font-size: 18px;
   background-color: #53336f;
   border: 1px solid black;
+  color: aliceblue;
+}
+
+.caja {
+  width: 400px;
+  padding: 30px;
+  background-color: white;
+  text-align: center;
 }
