@@ -18,9 +18,18 @@ button {
   background-color: whitesmoke;
   border: 2px solid purple;
   color: purple;
-
+  button:hover {
+    background-color: purple;
+    color: white;
+  }
 }
-
+input{
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: whitesmoke;
+  border: 2px solid purple;
+}
 img{
   display: block;
   margin: auto;
