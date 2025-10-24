@@ -1,12 +1,11 @@
 
 
 body {
-  display: flex; 
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
   margin: 10px;
-  background-color: #6d6376;
+  background-color: #e6d6f4;
   border: 1px solid black;
   text-align: center;
   padding: 30px;
@@ -16,7 +15,7 @@ button {
   margin: 10px;
   padding: 10px 20px;
   font-size: 18px;
-  background-color: #53336f;
+  background-color: #6f6e70;
   border: 1px solid black;
   color: aliceblue;
 }
