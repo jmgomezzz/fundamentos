@@ -27,7 +27,7 @@ button:hover {
   cursor: pointer;
 }
 input{
-  border-radius: 12px;
+  border-radius: 5px;
   padding: 10px 20px;
   font-size: 18px;
   background-color: whitesmoke;
