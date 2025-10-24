@@ -17,3 +17,8 @@ button {
   border: 1px solid black;
   color: aliceblue;
 }
+
+img{
+  display: block;
+  margin: 20px;
+}
