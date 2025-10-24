@@ -38,3 +38,11 @@ img{
   display: block;
   margin: auto;
 }
+pre{
+  background-color: whitesmoke;
+  padding: 10px;
+  border: 1px solid purple;
+  border-radius: 12px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
