@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
   margin: 10px;
   background-color: #e6d6f4;
-  border: 1px solid black;
+  border: 1px solid purple;
   text-align: center;
   padding: 30px;
   color: purple;
@@ -27,11 +27,11 @@ button:hover {
   cursor: pointer;
 }
 input{
-  border-radius: 5px;
-  padding: 10px 20px;
+  border-radius: 12px;
   font-size: 18px;
   background-color: whitesmoke;
   border: 2px solid purple;
+  color: purple;
 }
 img{
   display: block;
