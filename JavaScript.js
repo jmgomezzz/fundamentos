@@ -1,3 +1,7 @@
+
+/*Código realizado por: Irene Mendoza Mederos y José Manuel Gómez Ruiz*/
+
+
 //Clase pieza
 class Pieza{
 
@@ -138,3 +142,8 @@ class EstacionTratamiento {
         }
     }
 }
+
+
+
+
+
