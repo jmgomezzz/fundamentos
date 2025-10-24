@@ -18,11 +18,12 @@ button {
   background-color: whitesmoke;
   border: 2px solid purple;
   color: purple;
-  button:hover {
+ 
+}
+ button:hover {
     background-color: purple;
     color: white;
   }
-}
 input{
   border-radius: 12px;
   padding: 10px 20px;

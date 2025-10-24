@@ -14,6 +14,7 @@
 <label for = "turnos">O introduce el número de turnos a simular:</label>
 <input id="turnos" type="number" id="turnos" name="turnos">
 </form>
+<button id="run-custom">Simular turnos personalizados</button>
 <img src="https://www.maquinariaindustrial.net/wp-content/uploads/2020/04/flujo_continuo.png" alt="Fábrica" width="300" >
 <h2>Resultados</h2>
 <pre id="output">Aquí aparecerán los resultados de la simulación:</pre>
@@ -22,7 +23,8 @@
 <script src="./JavaScript.js"></script>
 
 <script>
-//Función para ejecutar la simulación
+//Función para ejecutar la simulación, esta simulación no es acumulativa y solo nos simulará el número de turnos indicado y luego se reiniciará.
+//El resto de la lógica está en el archivo JavaScript.js
 function Fabricar(turnos){
     //Creamos las instancias de la factoría y la estación de tratamiento
     const factoria = new Factoria();
@@ -61,11 +63,15 @@ function Fabricar(turnos){
     //Eventos listener para los botones
     document.getElementById("run-100").addEventListener("click", () => Fabricar(100));
     document.getElementById("run-1000").addEventListener("click", () => Fabricar(1000));
-    document.getElementById("turnos").addEventListener("change", (event) => {
-        const turnos = parseInt(event.target.value);
+    document.getElementById("run-custom").addEventListener("click", () => {
+        const turnosInput = document.getElementById("turnos").value;
+        const turnos = parseInt(turnosInput, 10);
         if (turnos > 0) {
             Fabricar(turnos);
+        } else {
+            alert("Por favor, introduce un número válido de turnos.");
         }
+
     });
     
 </script>
