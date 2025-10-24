@@ -8,7 +8,7 @@ constructor(nombre, codigoPieza, fechaFabricación) {
  this.codigoPieza= codigoPieza;
     }
 }
-//Piezas electricas
+//Piezas eléctricas
 class PiezaElectrica extends Pieza{
     constructor(nombre, codigoPieza, fechaFabricación, potencia, voltaje){
         super(nombre, codigoPieza, fechaFabricación);
@@ -16,7 +16,7 @@ class PiezaElectrica extends Pieza{
         this.voltaje= voltaje;
     }
 }
-//Piezas mecanicas
+//Piezas mecánicas
 class PiezaMecanica extends Pieza{
     constructor(nombre, codigoPieza, fechaFabricación, materialFabricación){
         super(nombre, codigoPieza, fechaFabricación);
@@ -42,13 +42,13 @@ class Factoria{
     this.TotalElectricas = 0;
     this.TotalMecanicas = 0;
     }
-//Generador de numeros para las odds random (y los codigos y todo lo que tenga que ver con math vaya)
+//Generador de números para las odds random, además de los códigos y todo lo que tenga que ver con math
 
-//Aquí nos elije el subtipo de pieza, usando los arrays creados en el constructor
+//Aquí nos elige el subtipo de pieza, usando los arrays creados en el constructor
 subtipoPieza(arr){
     return arr[Math.floor(Math.random() * arr.length)];
     }
-//Los dígitos del código los generamos de una forma similar, usando el bucle for para ir escribiendo los numeros
+//Los dígitos del código los generamos de una forma similar, usando el bucle for para ir escribiendo los números
 digitoCodigo(n){
     let s = '';
     for (let i = 0; i<n; i++){ 
@@ -61,7 +61,7 @@ serialCompleto(isElectrica){
 }
 //Fabricación de las piezas
 generarPieza(Nombre = ' '){
-    const isElectrica = Math.random() < 0.3; //Así nos aseguramos de que haya un 30% de probabilidadaes de que salga electrica, luego pondremos con un else las mecanicas y ya
+    const isElectrica = Math.random() < 0.3; //Así nos aseguramos de que haya un 30% de probabilidadaes de que salga eléctrica, luego pondremos con un else las mecánicas
     const fechaFabricación = new Date();
     if (isElectrica){
         const nombre = this.subtipoPieza(this.nombreElectricas);
